@@ -1,0 +1,3 @@
+[submodule "opensuse-tumbleweed-uwsgi-flask/root/application"]
+	path = opensuse-tumbleweed-uwsgi-flask/root/application
+	url = git@github.com:appleonkel/flask-hello-world.git

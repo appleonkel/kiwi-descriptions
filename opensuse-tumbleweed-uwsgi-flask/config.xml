@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<image schemaversion="6.8" name="openSUSE-Tumbleweed-uwsgi-container-image">
+  <description type="system">
+    <author>Oliver Bengs</author>
+    <contact>appleonkel@opensuse.org</contact>
+    <specification>openSUSE Tumbleweed uwsgi container</specification>
+  </description>
+  <preferences>
+    <type image="oci">
+      <containerconfig
+        name="opensuse-tumbleweed"
+        tag="uwsgi-flask"
+        maintainer="Oliver Bengs &lt;appleonkel@opensuse.org&gt;">
+        <expose>
+          <port number="9000"/>
+        </expose>
+        <entrypoint execute="start-uwsgi"/>
+      </containerconfig>
+    </type>
+    <type image="docker">
+      <containerconfig
+        name="opensuse-tumbleweed"
+        tag="uwsgi-flask"
+        maintainer="Oliver Bengs &lt;appleonkel@opensuse.org&gt;">
+        <expose>
+          <port number="9000"/>
+        </expose>
+        <entrypoint execute="start-uwsgi"/>
+      </containerconfig>
+    </type>
+    <version>1.0</version>
+    <packagemanager>zypper</packagemanager>
+    <rpm-check-signatures>false</rpm-check-signatures>
+    <rpm-excludedocs>true</rpm-excludedocs>
+  </preferences>
+  <repository imageinclude="true" type="rpm-md" alias="OSS">
+    <source path="obs://openSUSE:Tumbleweed/standard"/>
+  </repository>
+  <repository imageinclude="true" type="rpm-md" alias="Python Modules">
+    <source path="obs://devel:languages:python/openSUSE_Tumbleweed/"/>
+  </repository>
+
+  <packages type="image">
+    <package name="ca-certificates"/>
+    <package name="ca-certificates-mozilla"/>
+    <package name="coreutils"/>
+    <package name="iputils"/>
+    <package name="openSUSE-build-key"/>
+    <package name="krb5"/>
+    <package name="netcfg"/>
+    <package name="kubic-locale-archive"/>
+    <package name="uwsgi-python3"/>
+    <package name="python3-Flask"/>
+  </packages>
+  <packages type="bootstrap">
+    <package name="aaa_base"/>
+    <package name="cracklib-dict-small"/>
+    <package name="filesystem"/>
+    <package name="openSUSE-release"/>
+    <package name="shadow"/>
+  </packages>
+</image>

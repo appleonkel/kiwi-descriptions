@@ -1,0 +1,6 @@
+#!/bin/bash
+uwsgi \
+	--plugin python3 \
+	--http-socket :9000 \
+	--wsgi-file /app/application.py \
+	--callable app
